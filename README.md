@@ -15,7 +15,7 @@
 
 ## Instructions
 1. Create empty folder that will be project main folder for example (Logs-Analysis) here will be your python file.
-2. Download "Vagrantfile" (https://goo.gl/wLBxDA) and place it inside recently created folder.
+2. Download **Vagrantfile** (https://goo.gl/wLBxDA) and place it inside recently created folder.
 3. Run "vagrant up" command inside folder using any CLI (cmd,pwoershell,bash, git bash ...etc) and wait till it finish.
 4. Download datafile "newsdata.sql" (https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 5. Unzip "newsdata.zip" and copy "newsdata.sql" to our project folder.
@@ -45,7 +45,7 @@
 
 7. Run `vagrant ssh` inside project folder.
 8. cd to vagrant using command `cd /vagrant`. 
-9. Fill database from "newsdata.sql" file using this command `psql -d news -f newsdata.sql`.
+9. Fill database from **newsdata.sql** file using this command `psql -d news -f newsdata.sql`.
 10. Now VM machine and database with data is ready.
 
 The database includes three tables:
