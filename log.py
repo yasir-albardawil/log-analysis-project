@@ -1,10 +1,10 @@
 import psycopg2
 
-DB_NAME = 'news'
+DATABASE_NAME = 'news'
 
 
 def query(sql):
-    conn = psycopg2.connect(database=DB_NAME)
+    conn = psycopg2.connect(database=DATABASE_NAME)
     cursor = conn.cursor()
     cursor.execute(sql)
     results = cursor.fetchall()
