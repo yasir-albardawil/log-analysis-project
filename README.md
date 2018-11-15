@@ -6,14 +6,14 @@
 2.  Python code with DB-API
 3.  Linux-based virtual machine (VM) Vagrant
 
-## Requirements:
+## Requirements
 - Python  (https://www.python.org)
 - Psycopg2 v2.7.5  (http://initd.org/psycopg/download/)
 - PostgreSQL v9.5.14  (https://www.postgresql.org/download/)
 - Vagrant v2.2.0  (https://www.vagrantup.com/downloads.html) 
 - VirtualBox v5.1.38  (https://www.vagrantup.com/downloads.html)
 
-## Instructions:
+## Instructions
 1. Create empty folder that will be project main folder for example (Logs-Analysis) here will be your python file.
 2. Download "Vagrantfile" (https://goo.gl/wLBxDA) and place it inside recently created folder.
 3. Run "vagrant up" command inside folder using any CLI (cmd,pwoershell,bash, git bash ...etc) and wait till it finish.
