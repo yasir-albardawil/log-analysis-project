@@ -71,7 +71,7 @@ def more_one_percentage_lead_to_error():
                 FROM all_requests, error_requests
                 WHERE all_requests.date = error_requests.date
                 )
-                SELECT to_char(date,'FMMonth DD, YYYY'),
+                SELECT to_char(date,'FMMon DD, YYYY'),
                 percent FROM error_rate WHERE percent > 1;'''
 
     results = query(sql_query)
