@@ -19,7 +19,7 @@ def print_question(question):
 
 
 def the_most_three_articles():
-    query = '''select articles.title, count(*) as number
+    sql_query = '''select articles.title, count(*) as number
                 from log, articles
                 where log.status='200 OK'
                 and articles.slug = substr(log.path, 10)
@@ -27,7 +27,7 @@ def the_most_three_articles():
                 order by number desc
                 limit 3;'''
 
-    results = query(query)
+    results = query(sql_query)
     print_question("What are the most popular three articles of all time?")
 
     # print the result
@@ -36,7 +36,7 @@ def the_most_three_articles():
 
 
 def the_most_popular_article_authors():
-    query = '''select authors.name, count(*) as number
+    sql_query = '''select authors.name, count(*) as number
                 from articles, authors, log
                 where log.status='200 OK'
                 and authors.id = articles.author
@@ -44,7 +44,7 @@ def the_most_popular_article_authors():
                 group by authors.name
                 order by number desc;'''
 
-    results = query(query)
+    results = query(sql_query)
     print_question("\nWho are the most popular article authors of all time?")
 
     # print the result
@@ -53,7 +53,7 @@ def the_most_popular_article_authors():
 
 
 def more_one_percentage_lead_to_error():
-    query = '''WITH all_requests AS (
+    sql_query = '''WITH all_requests AS (
                 SELECT time::date AS day, count(*)
                 FROM log
                 GROUP BY time::date
@@ -64,7 +64,7 @@ def more_one_percentage_lead_to_error():
                 WHERE status != '200 OK'
                 GROUP BY time::date
                 ORDER BY time::date
-                , error_rate AS (
+                ), error_rate AS (
                 SELECT all_requests.day,
                 round(((error_requests.count*100.0)/all_requests.count*1.0), 2)
                 AS percent
@@ -73,7 +73,7 @@ def more_one_percentage_lead_to_error():
                 )
                 SELECT * FROM error_rate WHERE percent > 1;'''
 
-    results = query(query)
+    results = query(sql_query)
     print_question("\nOn which days did more than"
                    " 1% of requests lead to errors")
 
