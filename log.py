@@ -54,24 +54,25 @@ def the_most_popular_article_authors():
 
 def more_one_percentage_lead_to_error():
     sql_query = '''WITH all_requests AS (
-                SELECT time::date AS day, count(*)
+                SELECT time::date AS date, count(*)
                 FROM log
                 GROUP BY time::date
                 ORDER BY time::date
                 ), error_requests AS (
-                SELECT time::date AS day, count(*)
+                SELECT time::date AS date, count(*)
                 FROM log
                 WHERE status != '200 OK'
                 GROUP BY time::date
                 ORDER BY time::date
                 ), error_rate AS (
-                SELECT all_requests.day,
+                SELECT all_requests.date,
                 round(((error_requests.count*100.0)/all_requests.count*1.0), 2)
                 AS percent
                 FROM all_requests, error_requests
-                WHERE all_requests.day = error_requests.day
+                WHERE all_requests.date = error_requests.date
                 )
-                SELECT * FROM error_rate WHERE percent > 1;'''
+                SELECT to_char(date,'FMMonth DD, YYYY'),
+                percent FROM error_rate WHERE percent > 1;'''
 
     results = query(sql_query)
     print_question("\nOn which days did more than"
@@ -79,7 +80,7 @@ def more_one_percentage_lead_to_error():
 
     # print the result
     for result in results:
-        print('{date:%b %d,%Y} -- {error_rate:.2f}%'.format(
+        print('{date} -- {error_rate}%'.format(
             date=result[0],
             error_rate=result[1]))
 
