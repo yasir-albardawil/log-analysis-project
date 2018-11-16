@@ -83,7 +83,7 @@ The provided Python script (`log.py`) uses the  **psycopg2**  library to query t
 
 The database includes three tables:
 -   Authors table
--   Articles table~~strikethrough text~~
+-   Articles table
 -   Log table
 
 To execute the program, run  `python log.py`  from the command line.
